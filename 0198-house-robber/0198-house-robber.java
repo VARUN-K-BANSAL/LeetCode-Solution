@@ -39,6 +39,28 @@ class Solution {
         return dp[n-1];
     }
     
+    public int solveOpt(int[] nums) {
+        int n = nums.length;
+        
+        if(n == 0)
+            return 0;
+        if(n == 1)
+            return nums[0];
+        if(n == 2)
+            return Math.max(nums[0], nums[1]);
+        
+        int prev2 = 0;
+        int prev1 = nums[0];
+        
+        for(int i=1; i<n; i++) {
+            int ans = Math.max(prev2 + nums[i], prev1);
+            prev2 = prev1;
+            prev1 = ans;
+        }
+        
+        return prev1;
+    }
+    
     public int rob(int[] nums) {
         // using recursion will give TLE
         // int ans = solve(nums, nums.length - 1);
@@ -50,7 +72,10 @@ class Solution {
         
         
         // using bottom-up dp approach
-        int ans = solveTab(nums);
+        // int ans = solveTab(nums);
+        
+        // doing space optimization
+        int ans = solveOpt(nums);
         
         
         return ans;

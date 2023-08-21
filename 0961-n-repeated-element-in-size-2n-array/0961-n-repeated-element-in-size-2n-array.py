@@ -3,13 +3,13 @@ class Solution:
         d = {}
         for i in nums:
             if i in d:
-                d[i] += 1
+                d[i] +=1
             else:
                 d[i] = 1
-        max_count = 0
-        most_frequent = None
-        for key, value in d.items():
-            if value > max_count:
-                max_count = value
-                most_frequent = key
-        return most_frequent
+        max = 0
+        ans = None
+        for key,values in d.items():
+            if max < values:
+                max = values
+                ans = key
+        return ans

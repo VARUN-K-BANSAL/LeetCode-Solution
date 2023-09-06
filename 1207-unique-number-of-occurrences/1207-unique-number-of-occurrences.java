@@ -7,7 +7,12 @@ class Solution {
         HashMap<Integer, Integer> hm = new HashMap<>();
 
         for (int i = 0; i < n; ++i) {
-            hm.put(arr[i], hm.getOrDefault(arr[i], 0) + 1);
+            // hm.put(arr[i], hm.getOrDefault(arr[i], 0) + 1);
+            if(hm.containsKey(arr[i])) {
+                hm.put(arr[i], hm.get(arr[i]) + 1);
+            } else {
+                hm.put(arr[i], 1);
+            }
         }
 
         HashMap<Integer, Integer> hm2 = new HashMap<>();
